@@ -1,0 +1,72 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run (Debug)",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [],
+      "flutterMode": "debug"
+    },
+    {
+      "name": "Run (Profile)",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [],
+      "flutterMode": "profile"
+    },
+    {
+      "name": "Run (Release)",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [],
+      "flutterMode": "release"
+    },
+    {
+      "name": "Run (Android Debug)",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--target-platform",
+        "android-arm,android-arm64,android-x64"
+      ],
+      "flutterMode": "debug"
+    },
+    {
+      "name": "Run (iOS Debug)",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--target-platform",
+        "ios"
+      ],
+      "flutterMode": "debug"
+    },
+    {
+      "name": "Run (Web Debug)",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "-d",
+        "web-server",
+        "--web-hostname",
+        "localhost",
+        "--web-port",
+        "3000"
+      ],
+      "flutterMode": "debug"
+    }
+  ]
+}
