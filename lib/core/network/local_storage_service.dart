@@ -4,6 +4,7 @@ class LocalStorageService {
   static const String _userKey = 'user_data';
   static const String _resolvedTicketsKey = 'resolved_tickets';
   static const String _isLoggedInKey = 'is_logged_in';
+  static const String _themeKey = 'theme_mode';
   
   static late SharedPreferences _preferences;
   
@@ -48,5 +49,14 @@ class LocalStorageService {
       return resolvedTicketsString.map((id) => int.parse(id)).toList();
     }
     return [];
+  }
+  
+  // Theme methods
+  static Future<void> saveThemeMode(String themeMode) async {
+    await _preferences.setString(_themeKey, themeMode);
+  }
+
+  static String? getThemeMode() {
+    return _preferences.getString(_themeKey);
   }
 }

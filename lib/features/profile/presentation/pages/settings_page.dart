@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../shared/theme/theme_cubit.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
 
@@ -16,7 +17,6 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _emailNotifications = false;
   bool _pushNotifications = true;
   String _selectedLanguage = 'English';
-  ThemeMode _selectedTheme = ThemeMode.system;
 
   @override
   Widget build(BuildContext context) {
@@ -80,13 +80,20 @@ class _SettingsPageState extends State<SettingsPage> {
                 Card(
                   child: Column(
                     children: [
-                      ListTile(
-                        leading: const Icon(Icons.palette, color: Colors.purple),
-                        title: const Text('Theme'),
-                        subtitle: Text(_getThemeDisplayName(_selectedTheme)),
-                        trailing: const Icon(Icons.arrow_forward_ios),
-                        onTap: () {
-                          _showThemeSelector(context);
+                      BlocBuilder<ThemeCubit, ThemeMode>(
+                        builder: (context, currentTheme) {
+                          return ListTile(
+                            leading: const Icon(
+                              Icons.palette,
+                              color: Colors.purple,
+                            ),
+                            title: const Text('Theme'),
+                            subtitle: Text(_getThemeDisplayName(currentTheme)),
+                            trailing: const Icon(Icons.arrow_forward_ios),
+                            onTap: () {
+                              _showThemeSelector(context);
+                            },
+                          );
                         },
                       ),
                       const Divider(height: 1),
@@ -323,49 +330,47 @@ class _SettingsPageState extends State<SettingsPage> {
   void _showThemeSelector(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Select Theme'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              title: const Text('Light'),
-              trailing: _selectedTheme == ThemeMode.light 
-                  ? const Icon(Icons.check, color: Colors.blue) 
-                  : null,
-              onTap: () {
-                setState(() {
-                  _selectedTheme = ThemeMode.light;
-                });
-                Navigator.of(context).pop();
-              },
+      builder: (dialogContext) => BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, currentTheme) {
+          return AlertDialog(
+            title: const Text('Select Theme'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  title: const Text('Light'),
+                  trailing: currentTheme == ThemeMode.light
+                      ? const Icon(Icons.check, color: Colors.blue)
+                      : null,
+                  onTap: () {
+                    context.read<ThemeCubit>().changeTheme(ThemeMode.light);
+                    Navigator.of(dialogContext).pop();
+                  },
+                ),
+                ListTile(
+                  title: const Text('Dark'),
+                  trailing: currentTheme == ThemeMode.dark
+                      ? const Icon(Icons.check, color: Colors.blue)
+                      : null,
+                  onTap: () {
+                    context.read<ThemeCubit>().changeTheme(ThemeMode.dark);
+                    Navigator.of(dialogContext).pop();
+                  },
+                ),
+                ListTile(
+                  title: const Text('System Default'),
+                  trailing: currentTheme == ThemeMode.system
+                      ? const Icon(Icons.check, color: Colors.blue)
+                      : null,
+                  onTap: () {
+                    context.read<ThemeCubit>().changeTheme(ThemeMode.system);
+                    Navigator.of(dialogContext).pop();
+                  },
+                ),
+              ],
             ),
-            ListTile(
-              title: const Text('Dark'),
-              trailing: _selectedTheme == ThemeMode.dark 
-                  ? const Icon(Icons.check, color: Colors.blue) 
-                  : null,
-              onTap: () {
-                setState(() {
-                  _selectedTheme = ThemeMode.dark;
-                });
-                Navigator.of(context).pop();
-              },
-            ),
-            ListTile(
-              title: const Text('System Default'),
-              trailing: _selectedTheme == ThemeMode.system 
-                  ? const Icon(Icons.check, color: Colors.blue) 
-                  : null,
-              onTap: () {
-                setState(() {
-                  _selectedTheme = ThemeMode.system;
-                });
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

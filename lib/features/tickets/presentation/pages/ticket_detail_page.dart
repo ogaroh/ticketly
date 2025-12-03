@@ -195,7 +195,8 @@ class _TicketDetailPageState extends State<TicketDetailPage> {
                 )
               else
                 Card(
-                  color: Colors.green.withValues(alpha: 0.1),
+                  elevation: 0,
+                  color: Colors.green.withValues(alpha: 0.2),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Row(

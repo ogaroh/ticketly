@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/network/local_storage_service.dart';
 import 'core/navigation/app_router.dart';
 import 'shared/theme/app_theme.dart';
+import 'shared/theme/theme_cubit.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/usecases/login_usecase.dart';
 import 'features/auth/domain/usecases/logout_usecase.dart';
@@ -31,6 +32,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        // Theme BLoC
+        BlocProvider(create: (context) => ThemeCubit()),
         // Auth BLoC
         BlocProvider(
           create: (context) {
@@ -53,23 +56,27 @@ class MyApp extends StatelessWidget {
           },
         ),
       ],
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is AuthAuthenticated) {
-            // Navigate to tickets page when authenticated
-            AppRouter.router.go('/tickets');
-          } else if (state is AuthUnauthenticated) {
-            // Navigate to login page when unauthenticated
-            AppRouter.router.go('/login');
-          }
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is AuthAuthenticated) {
+                // Navigate to tickets page when authenticated
+                AppRouter.router.go('/tickets');
+              } else if (state is AuthUnauthenticated) {
+                // Navigate to login page when unauthenticated
+                AppRouter.router.go('/login');
+              }
+            },
+            child: MaterialApp.router(
+              title: 'Ticket Resolution',
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              themeMode: themeMode,
+              routerConfig: AppRouter.router,
+            ),
+          );
         },
-        child: MaterialApp.router(
-          title: 'Ticket Resolution',
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: ThemeMode.system,
-          routerConfig: AppRouter.router,
-        ),
       ),
     );
   }
