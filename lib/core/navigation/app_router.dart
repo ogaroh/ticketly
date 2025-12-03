@@ -3,6 +3,8 @@ import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/tickets/presentation/pages/tickets_page.dart';
 import '../../features/tickets/presentation/pages/ticket_detail_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/profile/presentation/pages/settings_page.dart';
+import '../../features/profile/presentation/pages/help_page.dart';
 import '../../features/tickets/domain/entities/ticket.dart';
 import 'main_navigation.dart';
 
@@ -10,6 +12,8 @@ class AppRouter {
   static const String login = '/login';
   static const String tickets = '/tickets';
   static const String profile = '/profile';
+  static const String settings = '/settings';
+  static const String help = '/help';
   static const String ticketDetail = '/ticket-detail';
 
   static final GoRouter _router = GoRouter(
@@ -42,6 +46,16 @@ class AppRouter {
           final ticket = state.extra as Ticket;
           return TicketDetailPage(ticket: ticket);
         },
+      ),
+      GoRoute(
+        path: settings,
+        name: 'settings',
+        builder: (context, state) => const SettingsPage(),
+      ),
+      GoRoute(
+        path: help,
+        name: 'help',
+        builder: (context, state) => const HelpPage(),
       ),
     ],
   );

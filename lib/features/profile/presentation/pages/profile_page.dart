@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/bloc/auth_event.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
@@ -89,10 +90,8 @@ class ProfilePage extends StatelessWidget {
                           title: const Text('Settings'),
                           trailing: const Icon(Icons.arrow_forward_ios),
                           onTap: () {
-                            // TODO: Navigate to settings page
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Settings coming soon!')),
-                            );
+                            // Navigate to settings page
+                            context.push('/settings');
                           },
                         ),
                         const Divider(height: 1),
@@ -104,10 +103,8 @@ class ProfilePage extends StatelessWidget {
                           title: const Text('Help & Support'),
                           trailing: const Icon(Icons.arrow_forward_ios),
                           onTap: () {
-                            // TODO: Navigate to help page
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Help coming soon!')),
-                            );
+                            // Navigate to help page
+                            context.push('/help');
                           },
                         ),
                       ],
