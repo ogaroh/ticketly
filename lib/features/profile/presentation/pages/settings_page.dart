@@ -60,7 +60,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       if (state is AuthAuthenticated)
                         ListTile(
                           leading: CircleAvatar(
-                            backgroundColor: Theme.of(context).colorScheme.primary,
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.primary,
                             child: Text(
                               state.user.email.substring(0, 1).toUpperCase(),
                               style: TextStyle(
@@ -89,7 +91,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ],
                   ),
                 ),
-                
+
                 const SizedBox(height: 24),
 
                 // Appearance Section
@@ -115,7 +117,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const Divider(height: 1),
                       ListTile(
-                        leading: const Icon(Icons.language, color: Colors.green),
+                        leading: const Icon(
+                          Icons.language,
+                          color: Colors.green,
+                        ),
                         title: const Text('Language'),
                         subtitle: Text(_selectedLanguage),
                         trailing: const Icon(Icons.arrow_forward_ios),
@@ -135,7 +140,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   child: Column(
                     children: [
                       SwitchListTile(
-                        secondary: const Icon(Icons.notifications, color: Colors.orange),
+                        secondary: const Icon(
+                          Icons.notifications,
+                          color: Colors.orange,
+                        ),
                         title: const Text('Enable Notifications'),
                         subtitle: const Text('Receive app notifications'),
                         value: _notificationsEnabled,
@@ -155,23 +163,32 @@ class _SettingsPageState extends State<SettingsPage> {
                         title: const Text('Email Notifications'),
                         subtitle: const Text('Ticket updates via email'),
                         value: _emailNotifications,
-                        onChanged: _notificationsEnabled ? (value) {
-                          setState(() {
-                            _emailNotifications = value;
-                          });
-                        } : null,
+                        onChanged: _notificationsEnabled
+                            ? (value) {
+                                setState(() {
+                                  _emailNotifications = value;
+                                });
+                              }
+                            : null,
                       ),
                       const Divider(height: 1),
                       SwitchListTile(
-                        secondary: const Icon(Icons.phone_android, color: Colors.green),
+                        secondary: const Icon(
+                          Icons.phone_android,
+                          color: Colors.green,
+                        ),
                         title: const Text('Push Notifications'),
-                        subtitle: const Text('Instant notifications on your device'),
+                        subtitle: const Text(
+                          'Instant notifications on your device',
+                        ),
                         value: _pushNotifications,
-                        onChanged: _notificationsEnabled ? (value) {
-                          setState(() {
-                            _pushNotifications = value;
-                          });
-                        } : null,
+                        onChanged: _notificationsEnabled
+                            ? (value) {
+                                setState(() {
+                                  _pushNotifications = value;
+                                });
+                              }
+                            : null,
                       ),
                     ],
                   ),
@@ -195,7 +212,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const Divider(height: 1),
                       ListTile(
-                        leading: const Icon(Icons.feedback, color: Colors.indigo),
+                        leading: const Icon(
+                          Icons.feedback,
+                          color: Colors.indigo,
+                        ),
                         title: const Text('Send Feedback'),
                         subtitle: const Text('Help us improve the app'),
                         trailing: const Icon(Icons.arrow_forward_ios),
@@ -245,7 +265,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const Divider(height: 1),
                       ListTile(
-                        leading: const Icon(Icons.delete_sweep, color: Colors.red),
+                        leading: const Icon(
+                          Icons.delete_sweep,
+                          color: Colors.red,
+                        ),
                         title: const Text('Clear Data'),
                         subtitle: const Text('Reset all app data'),
                         trailing: const Icon(Icons.arrow_forward_ios),
@@ -272,9 +295,9 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.w600,
-            ),
+          color: Theme.of(context).colorScheme.primary,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
@@ -394,25 +417,29 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _showLanguageSelector(BuildContext context) {
     final languages = ['English', 'Spanish', 'French', 'German', 'Italian'];
-    
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Select Language'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          children: languages.map((language) => ListTile(
-            title: Text(language),
-            trailing: _selectedLanguage == language 
-                ? const Icon(Icons.check, color: Colors.blue) 
-                : null,
-            onTap: () {
-              setState(() {
-                _selectedLanguage = language;
-              });
-              Navigator.of(context).pop();
-            },
-          )).toList(),
+          children: languages
+              .map(
+                (language) => ListTile(
+                  title: Text(language),
+                  trailing: _selectedLanguage == language
+                      ? const Icon(Icons.check, color: Colors.blue)
+                      : null,
+                  onTap: () {
+                    setState(() {
+                      _selectedLanguage = language;
+                    });
+                    Navigator.of(context).pop();
+                  },
+                ),
+              )
+              .toList(),
         ),
       ),
     );
@@ -456,7 +483,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _showFeedbackDialog(BuildContext context) {
     final feedbackController = TextEditingController();
-    
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -502,7 +529,7 @@ class _SettingsPageState extends State<SettingsPage> {
   void _showAboutDialog(BuildContext context) {
     showAboutDialog(
       context: context,
-      applicationName: _packageInfo?.appName ?? 'Ticket Resolution',
+      applicationName: _packageInfo?.appName ?? 'Ticketly',
       applicationVersion: _packageInfo?.version ?? 'Loading...',
       applicationIcon: const Icon(Icons.support_agent, size: 48),
       children: [
@@ -546,9 +573,9 @@ class _SettingsPageState extends State<SettingsPage> {
             onPressed: () {
               Navigator.of(context).pop();
               ScaffoldMessenger.of(context).clearSnackBars();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Cache cleared!')),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(const SnackBar(content: Text('Cache cleared!')));
             },
             child: const Text('Clear Cache'),
           ),
@@ -562,7 +589,9 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Export Data'),
-        content: const Text('This feature allows you to export your ticket data for backup or migration purposes.'),
+        content: const Text(
+          'This feature allows you to export your ticket data for backup or migration purposes.',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),

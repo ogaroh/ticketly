@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
               }
             },
             child: MaterialApp.router(
-              title: 'Ticket Resolution',
+              title: 'Ticketly',
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: themeMode,

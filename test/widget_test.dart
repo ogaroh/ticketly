@@ -16,7 +16,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // Verify that the login screen is displayed
-    expect(find.text('Ticket Resolution'), findsOneWidget);
+    expect(find.text('Ticketly'), findsOneWidget);
     expect(find.text('Sign in to manage your tickets'), findsOneWidget);
     expect(find.text('Email'), findsOneWidget);
     expect(find.text('Password'), findsOneWidget);
