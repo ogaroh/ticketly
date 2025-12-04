@@ -203,7 +203,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 const SizedBox(height: 24),
 
                 // Data Section
-                _buildSectionHeader(context, 'Data'),
+                _buildSectionHeader(context, 'Advanced'),
                 Card(
                   child: Column(
                     children: [
@@ -488,7 +488,9 @@ class _SettingsPageState extends State<SettingsPage> {
       applicationVersion: '1.0.0',
       applicationIcon: const Icon(Icons.support_agent, size: 48),
       children: [
-        const Text('A Flutter application for managing and resolving support tickets.'),
+        const Text(
+          'A simple Flutter application for managing and resolving support tickets.',
+        ),
         const SizedBox(height: 16),
         const Text('Built with Material 3 design and clean architecture.'),
         const SizedBox(height: 16),

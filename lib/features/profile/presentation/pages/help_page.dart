@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-class HelpPage extends StatelessWidget {
+class HelpPage extends StatefulWidget {
   const HelpPage({super.key});
+
+  @override
+  State<HelpPage> createState() => _HelpPageState();
+}
+
+class _HelpPageState extends State<HelpPage> {
+  PackageInfo? _packageInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPackageInfo();
+  }
+
+  Future<void> _loadPackageInfo() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    if (mounted) {
+      setState(() {
+        _packageInfo = packageInfo;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -203,9 +226,15 @@ class HelpPage extends StatelessWidget {
                           ),
                     ),
                     const SizedBox(height: 12),
-                    const Text('Version: 1.0.0'),
+                    Text('Version: ${_packageInfo?.version ?? 'Loading...'}'),
                     const SizedBox(height: 4),
-                    const Text('Build: 100'),
+                    Text('Build: ${_packageInfo?.buildNumber ?? 'Loading...'}'),
+                    const SizedBox(height: 4),
+                    Text('App Name: ${_packageInfo?.appName ?? 'Loading...'}'),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Package Name: ${_packageInfo?.packageName ?? 'Loading...'}',
+                    ),
                     const SizedBox(height: 4),
                     const Text('Built with Flutter & Material 3'),
                     const SizedBox(height: 12),

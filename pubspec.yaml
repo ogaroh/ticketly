@@ -48,6 +48,9 @@ dependencies:
   # Local storage
   shared_preferences: ^2.3.3
   
+  # Package info
+  package_info_plus: ^8.0.2
+  
   # JSON annotation
   json_annotation: ^4.9.0
 
