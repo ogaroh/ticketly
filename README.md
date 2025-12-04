@@ -25,7 +25,7 @@ A Flutter application for managing and resolving support tickets with a clean, m
   - Confirmation dialog before resolving
   - Visual feedback for resolved tickets
 
-- **Bottom Navigation (2 tabs)**
+- **Bottom Navigation**
   - **Tickets**: Main ticket list view
   - **Profile**: User profile with logout functionality
 
