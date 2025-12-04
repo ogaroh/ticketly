@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ticketly/shared/constants.dart';
 import 'core/network/local_storage_service.dart';
 import 'core/navigation/app_router.dart';
 import 'shared/theme/app_theme.dart';
@@ -69,7 +70,7 @@ class MyApp extends StatelessWidget {
               }
             },
             child: MaterialApp.router(
-              title: 'Ticketly',
+              title: kAppTitle,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: themeMode,

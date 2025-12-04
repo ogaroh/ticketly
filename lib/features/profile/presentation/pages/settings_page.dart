@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:ticketly/shared/constants.dart';
 import '../../../../shared/theme/theme_cubit.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
@@ -529,7 +530,7 @@ class _SettingsPageState extends State<SettingsPage> {
   void _showAboutDialog(BuildContext context) {
     showAboutDialog(
       context: context,
-      applicationName: _packageInfo?.appName ?? 'Ticketly',
+      applicationName: _packageInfo?.appName ?? kAppTitle,
       applicationVersion: _packageInfo?.version ?? 'Loading...',
       applicationIcon: const Icon(Icons.support_agent, size: 48),
       children: [

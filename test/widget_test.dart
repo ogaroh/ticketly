@@ -8,6 +8,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:ticketly/main.dart';
+import 'package:ticketly/shared/constants.dart';
 
 void main() {
   testWidgets('App loads and shows login screen', (WidgetTester tester) async {
@@ -16,7 +17,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // Verify that the login screen is displayed
-    expect(find.text('Ticketly'), findsOneWidget);
+    expect(find.text(kAppTitle), findsOneWidget);
     expect(find.text('Sign in to manage your tickets'), findsOneWidget);
     expect(find.text('Email'), findsOneWidget);
     expect(find.text('Password'), findsOneWidget);

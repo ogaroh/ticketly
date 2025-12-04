@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
+import 'package:ticketly/shared/constants.dart';
 import '../models/ticket_model.dart';
 
 class TicketApiService {
-  static const String baseUrl = 'https://jsonplaceholder.typicode.com';
+  static const String baseUrl = kTicketsBaseUrl;
 
   static Future<List<TicketModel>> fetchTickets() async {
     final url = Uri.parse('$baseUrl/posts');
