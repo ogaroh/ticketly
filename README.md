@@ -2,6 +2,8 @@
 
 A Flutter application for managing and resolving support tickets with a clean, modern interface using Material 3 design & clean architecture.
 
+🚀🚀🚀 [Download the APK Here](https://github.com/ogaroh/ticketly/releases/download/1.0.0/ticketly-app-release-v1.0.0-1.apk)
+
 ## Features
 
 ### Main Features
