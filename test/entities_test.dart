@@ -14,7 +14,7 @@ void main() {
       expect(user.isLoggedIn, true);
     });
 
-    test('should create copy with updated properties', () {
+    test('should create copy of a user with updated properties', () {
       const user = User(
         email: 'test@example.com',
         isLoggedIn: false,
