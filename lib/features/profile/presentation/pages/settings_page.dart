@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import '../../../../shared/theme/theme_cubit.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
@@ -17,6 +18,22 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _emailNotifications = false;
   bool _pushNotifications = true;
   String _selectedLanguage = 'English';
+  PackageInfo? _packageInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPackageInfo();
+  }
+
+  Future<void> _loadPackageInfo() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    if (mounted) {
+      setState(() {
+        _packageInfo = packageInfo;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -485,8 +502,8 @@ class _SettingsPageState extends State<SettingsPage> {
   void _showAboutDialog(BuildContext context) {
     showAboutDialog(
       context: context,
-      applicationName: 'Ticket Resolution',
-      applicationVersion: '1.0.0',
+      applicationName: _packageInfo?.appName ?? 'Ticket Resolution',
+      applicationVersion: _packageInfo?.version ?? 'Loading...',
       applicationIcon: const Icon(Icons.support_agent, size: 48),
       children: [
         const Text(
