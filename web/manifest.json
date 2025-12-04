@@ -1,6 +1,6 @@
 {
-    "name": "interintel",
-    "short_name": "interintel",
+    "name": "ticketly",
+    "short_name": "ticketly",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

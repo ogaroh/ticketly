@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:interintel/features/auth/domain/entities/user.dart';
-import 'package:interintel/features/tickets/domain/entities/ticket.dart';
+import 'package:ticketly/features/auth/domain/entities/user.dart';
+import 'package:ticketly/features/tickets/domain/entities/ticket.dart';
 
 void main() {
   group('User Entity Tests', () {

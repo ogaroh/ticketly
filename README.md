@@ -1,4 +1,4 @@
-# interintel
+# ticketly
 
 # Ticket Resolution App 🎫
 
@@ -106,7 +106,7 @@ lib/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd interintel
+   cd ticketly
    ```
 
 2. **Install dependencies**

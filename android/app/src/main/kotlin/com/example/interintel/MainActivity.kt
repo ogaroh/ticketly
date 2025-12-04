@@ -1,4 +1,4 @@
-package com.example.interintel
+package com.ticketly.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

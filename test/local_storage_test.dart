@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:interintel/core/network/local_storage_service.dart';
+import 'package:ticketly/core/network/local_storage_service.dart';
 
 void main() {
   group('LocalStorageService Tests', () {
