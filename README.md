@@ -1,6 +1,4 @@
-# ticketly
-
-# Ticket Resolution App 🎫
+# Ticketly (Ticket Resolution App)
 
 A Flutter application for managing and resolving support tickets with a clean, modern interface using Material 3 design.
 
