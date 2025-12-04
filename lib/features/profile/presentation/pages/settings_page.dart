@@ -418,7 +418,9 @@ class _SettingsPageState extends State<SettingsPage> {
               Text('A: No, once resolved, tickets cannot be unmarked'),
               SizedBox(height: 16),
               Text('Q: How do I refresh the ticket list?'),
-              Text('A: Pull down on the tickets list to refresh'),
+              Text(
+                'A: Pull down on the tickets list or click the refresh button to refresh',
+              ),
               SizedBox(height: 16),
               Text('Q: Where is my data stored?'),
               Text('A: All data is stored locally on your device'),
@@ -490,7 +492,7 @@ class _SettingsPageState extends State<SettingsPage> {
         const SizedBox(height: 16),
         const Text('Built with Material 3 design and clean architecture.'),
         const SizedBox(height: 16),
-        const Text('© 2025 Ticket Resolution App'),
+        Text('© ${DateTime.now().year} Erick Ogaro'),
       ],
     );
   }

@@ -9,11 +9,12 @@ class TicketApiService {
   static Future<List<TicketModel>> fetchTickets() async {
     final url = Uri.parse('$baseUrl/posts');
 
-    log('Fetching tickets from API: $url');
-
     try {
       final response = await http.get(url);
 
+      log(
+        'Fetching tickets from API: $url, Status Code: ${response.statusCode}',
+      );
       if (response.statusCode == 200) {
         final List<dynamic> jsonData = json.decode(response.body);
         return jsonData.map((json) => TicketModel.fromJson(json)).toList();

@@ -68,7 +68,7 @@ class HelpPage extends StatelessWidget {
                     _buildFaqItem(
                       context,
                       'How do I refresh the ticket list?',
-                      'Pull down on the tickets list to refresh and get the latest data from the server.',
+                      'Pull down on the tickets list or click the refresh button to refresh and get the latest data from the server.',
                     ),
                   ],
                 ),
