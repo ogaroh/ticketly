@@ -37,6 +37,7 @@ class _TicketsPageState extends State<TicketsPage> {
       body: BlocConsumer<TicketBloc, TicketState>(
         listener: (context, state) {
           if (state is TicketError) {
+            ScaffoldMessenger.of(context).clearSnackBars();
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),

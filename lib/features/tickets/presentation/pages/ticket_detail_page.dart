@@ -66,6 +66,7 @@ class _TicketDetailPageState extends State<TicketDetailPage> {
               setState(() {
                 currentTicket = updatedTicket;
               });
+              ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Ticket marked as resolved!'),
@@ -83,6 +84,7 @@ class _TicketDetailPageState extends State<TicketDetailPage> {
             setState(() {
               isResolving = false;
             });
+            ScaffoldMessenger.of(context).clearSnackBars();
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('Error: ${state.message}'),

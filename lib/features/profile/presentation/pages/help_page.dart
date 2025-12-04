@@ -176,6 +176,7 @@ class _HelpPageState extends State<HelpPage> {
                       title: const Text('Email Support'),
                       subtitle: const Text('support@ticketapp.com'),
                       onTap: () {
+                        ScaffoldMessenger.of(context).clearSnackBars();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Email support feature coming soon!'),
@@ -189,6 +190,7 @@ class _HelpPageState extends State<HelpPage> {
                       title: const Text('Live Chat'),
                       subtitle: const Text('Available 9 AM - 5 PM EST'),
                       onTap: () {
+                        ScaffoldMessenger.of(context).clearSnackBars();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Live chat feature coming soon!'),
@@ -332,6 +334,7 @@ class _HelpPageState extends State<HelpPage> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Thank you for your feedback!'),

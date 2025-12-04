@@ -12,7 +12,7 @@ class LocalStorageService {
     _preferences = await SharedPreferences.getInstance();
   }
   
-  // User authentication methods
+  // User authentication
   static Future<void> saveUser(String email) async {
     await _preferences.setString(_userKey, email);
     await _preferences.setBool(_isLoggedInKey, true);
@@ -29,9 +29,11 @@ class LocalStorageService {
   static Future<void> logout() async {
     await _preferences.remove(_userKey);
     await _preferences.setBool(_isLoggedInKey, false);
+    // also clear resolved tickets on logout
+    await _preferences.remove(_resolvedTicketsKey);
   }
   
-  // Ticket resolution methods
+  // Ticket resolution
   static Future<void> markTicketAsResolved(int ticketId) async {
     List<int> resolvedTickets = getResolvedTicketIds();
     if (!resolvedTickets.contains(ticketId)) {

@@ -467,6 +467,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Thank you for your feedback!'),
@@ -527,6 +528,7 @@ class _SettingsPageState extends State<SettingsPage> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Cache cleared!')),
               );
@@ -552,6 +554,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Data export started...')),
               );
